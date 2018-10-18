@@ -8,7 +8,7 @@ const KeyedMessage = kafka.KeyedMessage;
 const Client = kafka.Client;
 
 const port = 8000;
-const brokerHost = 'localhost:2181';
+// const brokerHost = 'localhost:2181';
 // const brokerHost =  'ec2-52-61-1-184.us-gov-west-1.compute.amazonaws.com:2181'
 
 app.use(cors());
@@ -23,8 +23,8 @@ app.get('/', (req, res) => {
 })
 
 app.post('/agent/log', (req, res) => {
-    // var brokerHost =  'ec2-52-61-1-184.us-gov-west-1.compute.amazonaws.com:2181'
-    var clientId = req.body.clientId;
+    var brokerHost = 'ec2-52-61-1-184.us-gov-west-1.compute.amazonaws.com:2181'
+    var clientId = "test-client-id";
     var client = new Client(brokerHost, clientId, {
         sessionTimeout: 300,
         spinDelay: 100,
@@ -42,7 +42,7 @@ app.post('/agent/log', (req, res) => {
     producer.on('ready', function() {
         var payload = [{
             topic: 'test',
-            messages: req.body.data,
+            messages: req.body,
             attributes: 1 /* Use GZip compression for the payload */
         }];
         producer.send(payload, function(error, result) {
