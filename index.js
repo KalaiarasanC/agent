@@ -53,7 +53,7 @@ app.post('/agent/log', (req, res) => {
             attributes: 1 /* Use GZip compression for the payload */
         }];
         producer.send(payload, function(error, result) {
-            // console.info('Sent payload to Kafka: ', payload);
+            console.info('Sent payload to Kafka: ', payload);
             if (error) {
                 console.error(error);
                 res.status(500).send(error)
