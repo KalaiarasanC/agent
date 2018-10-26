@@ -51,8 +51,8 @@ function stop() {
 };
 
 
-var brokerHost = 'localhost:2181'
-    // var brokerHost =  'ec2-52-61-1-184.us-gov-west-1.compute.amazonaws.com:2181'
+// var brokerHost = 'localhost:2181'
+var brokerHost = 'ec2-52-61-1-184.us-gov-west-1.compute.amazonaws.com:2181'
 var clientId = 'my-client-id'
 var client = new Client(brokerHost, clientId, {
     sessionTimeout: 300,
