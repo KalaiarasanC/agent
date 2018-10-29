@@ -9,7 +9,7 @@ const Client = kafka.Client;
 const utf8 = require('utf8');
 const port = 8000;
 // runningon 52.61.251.184
-
+// broker : 52.61.1.184
 app.use(cors());
 
 app.use(bodyParser.urlencoded({
@@ -29,7 +29,8 @@ app.post('/agent/test', (req, res) => {
 app.post('/agent/log', (req, res) => {
     console.log('coming', req.body);
     // var brokerHost = 'localhost:2181'
-    const brokerHost = 'ec2-52-61-1-184.us-gov-west-1.compute.amazonaws.com:2181'
+    // const brokerHost = 'ec2-52-61-1-184.us-gov-west-1.compute.amazonaws.com:2181'
+    const brokerHost = '52.61.1.184:2181'
     const clientId = "test-client-id";
     const topic = 'test';
     const client = new Client(brokerHost, clientId, {
